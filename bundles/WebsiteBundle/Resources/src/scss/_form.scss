@@ -1,0 +1,13 @@
+.form {
+    label {
+        @apply tw-text-sm tw-text-brand;
+    }
+
+    input {
+        @apply tw-w-full tw-block tw-border tw-border-gray-500 tw-mb-5 tw-max-w-xs tw-py-1 tw-px-2;
+    }
+
+    button[type="submit"] {
+        @apply tw-bg-brand tw-px-5 tw-py-2 tw-text-white tw-font-bold;
+    }
+}

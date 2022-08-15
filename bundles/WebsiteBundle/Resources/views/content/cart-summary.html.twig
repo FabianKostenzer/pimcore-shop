@@ -1,0 +1,44 @@
+{% extends '@Website/base.html.twig' %}
+
+{% block content %}
+  <div class="tw-container tw-mt-10">
+    <h1 class="tw-font-bold tw-text-2xl tw-mb-5">Zusammenfassung</h1>
+    <div class="tw-grid tw-grid-cols-5 tw-font-bold tw-border-b tw-border-b-gray-500 tw-pb-2">
+      <div>Menge</div>
+      <div>Produkt</div>
+      <div>Stückpreis</div>
+      <div>Gesamtpreis</div>
+      <div>Aktionen</div>
+    </div>
+
+    <div class="tw-space-y-4 tw-mt-2 tw-border-b tw-border-b-gray-500 tw-pb-2">
+      {% for key, car in cars %}
+        <div class="tw-grid tw-grid-cols-5">
+          <div>{{amounts[key]}}</div>
+          <a href="{{path('shop_car_detail', {'id': car.id})}}" class="tw-text-brand tw-underline-offset-2 tw-underline">{{car.name}}</a>
+          <div>
+            &euro;
+            {{car.price | number_format(2, ',', '.')}}
+          </div>
+          <div>
+            &euro;
+            {{(car.price * amounts[key]) | number_format(2, ',', '.')}}
+          </div>
+          <div class="tw-flex tw-gap-x-1">
+            <a href="{{path('cart_add', {'id': car.id})}}" class="tw-rounded-full tw-bg-brand tw-w-5 tw-h-5 tw-text-white tw-font-bold tw-grid tw-place-items-center tw-leading-none">+</a>
+            <a href="{{path('cart_remove', {'id': car.id})}}" class="tw-rounded-full tw-bg-brand tw-w-5 tw-h-5 tw-text-white tw-font-bold tw-grid tw-place-items-center tw-leading-none">-</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="tw-grid tw-grid-cols-5 tw-font-bold tw-mt-4">
+      <div class="tw-col-start-4">
+        &euro;
+        {{totalPrice | number_format(2, ',', '.')}}
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

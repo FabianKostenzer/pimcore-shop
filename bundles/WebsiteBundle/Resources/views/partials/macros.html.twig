@@ -1,0 +1,5 @@
+{% macro showIcon(id, classes = '') %}
+  <svg class="wdt-icon {{ classes }}">
+    <use xlink:href="#wdt-{{ id }}"></use>
+  </svg>
+{% endmacro %}

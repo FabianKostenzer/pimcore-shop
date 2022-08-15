@@ -1,0 +1,10 @@
+{% extends '@Website/base.html.twig' %}
+
+{% block content %}
+  <div class="tw-container tw-mt-10">
+    <h1 class="tw-font-bold tw-mb-3 tw-text-xl">{{pimcore_input('home-h1', {placeholder: "Headline..."})}}</h1>
+    <p class="tw-mb-3">{{pimcore_input('home-p', {placeholder: 'Lorem ipsum...'})}}</p>
+    {{pimcore_link('home-link', {class: 'tw-text-brand tw-underline tw-underline-offset-2 tw-font-bold'})}}
+  </div>
+
+{% endblock %}

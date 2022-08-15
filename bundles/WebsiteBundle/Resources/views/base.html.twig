@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="{{ editmode ? 'editmode' }}" lang="{{ app.request.locale|slice(0, 2) }}">
+  <head>
+    {% apply spaceless %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=6.0, minimum-scale=1.0">
+
+    {% if getEnvValue('APP_ENV') != 'prod' %}
+      <meta name="robots" content="noindex, nofollow">
+    {% endif %}
+
+    <!-- Favicon & Meta -->
+    {% include '@Website/partials/favicon.html.twig' %}
+    {% include '@Website/partials/meta-tags.html.twig' %}
+
+    <!-- Styles & Scripts -->
+    {% do pimcore_head_link().appendStylesheet(asset('/bundles/website/css/main.css')) %}
+    {% do pimcore_head_script().appendFile(asset('/bundles/website/js/main.js')) %}
+
+    <!-- Head Output -->
+    {{ pimcore_head_title() }}
+    {{ pimcore_head_meta() }}
+    {{ pimcore_head_link() }}
+    {% endapply %}
+  </head>
+
+  <body>
+    {% if getEnvValue('APP_ENV') != 'prod' %}
+      {% include '@Website/partials/screensize.html.twig' %}
+    {% endif %}
+
+
+    {% include '@Website/components/Header/index.html.twig' %}
+
+    <main class="Main"> {% block content %}{% endblock %}
+      </main>
+
+      {% include '@Website/partials/icons.html.twig' %}
+
+      {% block scripts deferred %}
+        {{ pimcore_head_script() }}
+      {% endblock %}
+    </body>
+  </html>

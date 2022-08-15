@@ -1,0 +1,17 @@
+<header class="Header tw-bg-brand tw-text-white tw-text-base tw-sticky tw-top-0 tw-z-50">
+  <div class="tw-container tw-h-16 tw-flex tw-items-center tw-justify-between">
+    <a class="tw-font-bold" href="/">Logo</a>
+    <ul class="tw-flex tw-gap-x-5">
+      <li>
+        <a href="{{path("shop_home")}}">Shop</a>
+      </li>
+      <li>
+        <a href="{{path("admin_home")}}">Admin</a>
+      </li>
+    </ul>
+    <div class="tw-flex tw-items-center tw-gap-x-5">
+      {{ render(controller('WebsiteBundle\\Controller\\CartController::widgetAction')) }}
+      <a href="{{path('auth_register')}}">Registrieren</a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,10 @@
+{% set isEmpty = totalAmount == 0 %}
+
+<a href="{{isEmpty ? path('shop_home') : path('cart_summary')}}" class="tw-relative">
+  <svg width="32" height="32" class="tw-w-6 tw-h-6">
+    <use xlink:href="#icon-cart"></use>
+  </svg>
+  {% if not isEmpty %}
+    <p class="tw-absolute tw-top-0 tw-right-0 tw-translate-x-1/2 -tw-translate-y-1/2 tw-bg-white tw-text-brand tw-font-bold tw-text-2xs tw-w-4 tw-h-4 tw-grid tw-place-items-center tw-rounded-full tw-leading-none">{{totalAmount}}</p>
+  {% endif %}
+</a>

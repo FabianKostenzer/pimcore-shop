@@ -1,0 +1,20 @@
+{% extends '@Website/base.html.twig' %}
+
+{% block content %}
+  <div class="tw-w-screen tw-h-screen tw-relative tw-text-white">
+    <img class="tw-absolute tw-left-0 tw-top-0 tw-w-full tw-h-full tw-object-cover" src="{{car.image}}" alt="">
+    <p class="tw-absolute tw-left-5 tw-bottom-5">{{car.imageText}}</p>
+  </div>
+  <div class="tw-container tw-mt-10 tw-pb-96">
+    <div class="tw-flex tw-items-baseline tw-justify-between">
+      <h1 class="tw-font-bold tw-text-2xl tw-mb-4">{{car.name}}</h1>
+      <p class="tw-text-2xl">
+        &euro;
+        {{car.price | number_format(2, ',', '.')}}
+      </p>
+    </div>
+    <p>{{car.description}}</p>
+    <a href="{{path('cart_add', {'id': car.id})}}" class="tw-text-white tw-bg-brand tw-px-5 tw-py-2 tw-rounded-full tw-font-bold tw-inline-block tw-mt-5">Kaufen</a>
+  </div>
+
+{% endblock %}

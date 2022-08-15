@@ -1,0 +1,23 @@
+{% set metaTitle = document.getTitle() %}
+
+{% if metaTitle is not empty %}
+  {% do pimcore_head_title(metaTitle) %}
+  {% do pimcore_head_meta().setProperty('og:title', metaTitle) %}
+{% endif %}
+
+{% if document and document.getDescription() is not empty %}
+  {% do pimcore_head_meta().appendName('description', document.getDescription()) %}
+  {% do pimcore_head_meta().setProperty('og:description', document.getDescription()) %}
+{% endif %}
+
+{% do pimcore_head_title().append('Titel der Website') %}
+{% do pimcore_head_title().setSeparator(' - ') %}
+
+{% do pimcore_head_meta().setProperty('og:site_name', 'Titel der Website') %}
+{% do pimcore_head_meta().setProperty('og:url', app.request.uri) %}
+{% do pimcore_head_meta().setProperty('og:locale', app.request.locale) %}
+
+{# set og:image if thumbnail is set (site property) #}
+{% if document.getProperty('pageThumbnail') %}
+  {% do pimcore_head_meta().setProperty('og:image', document.getProperty('pageThumbnail').thumbnail('og-image').path) %}
+{% endif %}

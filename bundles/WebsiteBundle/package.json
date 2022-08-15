@@ -1,0 +1,30 @@
+{
+  "name": "WebsiteBundle",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "npx mix",
+    "watch": "npx mix watch",
+    "hot": "npx mix watch --hot",
+    "prod": "npm run production",
+    "production": "npx mix --production"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.9",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "laravel-mix": "^6.0.43",
+    "sass": "^1.49.11",
+    "sass-loader": "^12.1.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.4",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.23"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "chrome >= 41"
+  ]
+}
